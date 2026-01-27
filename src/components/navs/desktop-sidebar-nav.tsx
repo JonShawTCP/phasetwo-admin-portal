@@ -12,6 +12,7 @@ import { NavigationItem } from "../layouts/layout";
 import { useTranslation } from "react-i18next";
 import ThemePicker from "./components/theme-picker";
 import { useTheme } from "@/components/utils/useTheme";
+const { features: featureFlags } = config.env;
 
 type Props = {
   menuCollapsed: boolean;
@@ -145,7 +146,7 @@ const DesktopSidebarNav: React.FC<Props> = ({
                   </div>
                   <div className="py-1">
                     <Link
-                      to="/"
+                      to={featureFlags.customHomepageLink || "/"}
                       className="group -mx-3 flex items-center justify-between rounded-md px-3 py-2 text-sm text-gray-700 transition hover:bg-gray-100 hover:text-gray-900 dark:text-gray-200 dark:hover:bg-zinc-800 dark:hover:text-gray-100"
                     >
                       <div>{t("returnToHomepage")}</div>
