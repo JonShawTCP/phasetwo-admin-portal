@@ -1,8 +1,8 @@
 {
-  "realm": "test",
-  "auth-server-url": "http://localhost:8080/auth/",
+  "realm": "tcp",
+  "auth-server-url": "https://identity.lus.loc:4431/",
   "ssl-required": "external",
-  "resource": "security-admin-console",
+  "resource": "testportal",
   "public-client": true,
   "confidential-port": 0
 }
