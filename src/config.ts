@@ -53,6 +53,7 @@ export interface Features {
   orgDomainsEnabled: boolean;
   orgSsoEnabled: boolean;
   orgEventsEnabled: boolean;
+  customHomepageLink: string;
 }
 
 declare const environment: Environment;
@@ -81,6 +82,7 @@ const initialFeatures: Features = {
   orgDomainsEnabled: true,
   orgSsoEnabled: true,
   orgEventsEnabled: true,
+  customHomepageLink: "/",
 };
 
 const initialEnvironment: Environment = {

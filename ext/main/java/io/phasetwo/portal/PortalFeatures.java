@@ -40,7 +40,8 @@ import org.keycloak.services.managers.Auth;
   "orgInvitationsEnabled",
   "orgDomainsEnabled",
   "orgSsoEnabled",
-  "orgEventsEnabled"
+  "orgEventsEnabled",
+  "customHomepageLink"
 })
 public class PortalFeatures {
 
@@ -52,6 +53,12 @@ public class PortalFeatures {
     String v = realm.getAttribute(CONFIG_KEY(property));
     if (v == null) return defaultValue;
     return ("true".equals(v));
+  }
+
+  public static String CONFIG_VALUE(RealmModel realm, String property, String defaultValue) {
+    String v = realm.getAttribute(CONFIG_KEY(property));
+    if (v == null) return defaultValue;
+    return (v);
   }
 
   public static PortalFeatures fromSession(KeycloakSession session, Auth auth) {
@@ -135,6 +142,9 @@ public class PortalFeatures {
     // orgEventsEnabled
     config.orgEventsEnabled(CONFIG_ENABLED(realm, "org.events.enabled", true));
 
+    // customHomepageLink
+    config.customHomepageLink(CONFIG_VALUE(realm, "customHomepageLink", "/"));
+
     return config;
   }
 
@@ -206,6 +216,9 @@ public class PortalFeatures {
 
   @JsonProperty("orgEventsEnabled")
   private Boolean orgEventsEnabled;
+
+  @JsonProperty("customHomepageLink")
+  private String customHomepageLink;
 
   @JsonProperty("profileEnabled")
   public Boolean getProfileEnabled() {
@@ -549,6 +562,11 @@ public class PortalFeatures {
 
   public PortalFeatures orgEventsEnabled(Boolean orgEventsEnabled) {
     this.orgEventsEnabled = orgEventsEnabled;
+    return this;
+  }
+
+  public PortalFeatures customHomepageLink(String customHomepageLink) {
+    this.customHomepageLink = customHomepageLink;
     return this;
   }
 }
